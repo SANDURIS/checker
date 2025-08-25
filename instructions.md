@@ -1,6 +1,6 @@
 Playwright Test Execution Guide
 
-clone the repository
+clone the repository: https://github.com/SANDURIS/checker.git 
 
 
 Prerequisites
@@ -24,6 +24,6 @@ npm install --save-dev @playwright/test
 Install browsers (first time only):
 npx playwright install
 
-Running the Test
 4. Execute the Test
+
 npx playwright test checker.spec.ts
