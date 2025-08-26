@@ -15,8 +15,12 @@ test.describe('Checkers Game Automation', () => {
     test.setTimeout(1200000)
     //function to perform a moves
     const makeMove = async (source: string, target: string) => {
+       //TODO keep track of opponent coins on the board with their positions.
+       //TODO always keep track of your coins as opponent might have captured in previous iteration. 
         await page.hover(`img[name="${source}"]`)
         await page.locator(`img[name="${source}"]`).click()
+       //TODO check for next forwarding square if it is empty or occupied by you or opponent 
+       //TODO jump to next legal forwarding square if it is occupied by opponent otherwise  jumping NOT allowed.
         await new Promise(resolve => setTimeout(resolve, 1000)) 
         await page.hover(`img[name="${target}"]`)
         await page.locator(`img[name="${target}"]`).click()
@@ -36,6 +40,7 @@ test.describe('Checkers Game Automation', () => {
           // Verify the middle piece is now empty (captured)
           await expect(page.locator(`img[name="${middleSpace}"]`)).not.toHaveAttribute('src', /me1\.gif/)
           console.log(`Captured piece at ${middleSpace}`)
+         //TODO remove the captured coin from tracking   
       }
 
 
@@ -81,3 +86,4 @@ test.describe('Checkers Game Automation', () => {
     console.log('Step 4: Game restarted successfully.')
   })
 })
+
